@@ -9,7 +9,7 @@ senders_domain_name = dict()
 for line in fhand:
     if line.startswith('From '):
         at_position = line.find('@')
-        #print atposition
+        #print at_position
         space_position = line.find(" ", at_position)
         #print space_position 
         host = line[at_position+1 :space_position]

@@ -14,8 +14,8 @@ for word in words:
 print t                         #this is what our list of tuples looks like prior to sorting.    
 
 t.sort(reverse=True)            #the sort() method on a list sorts that list into ascending order, but since we uesd the
-                                #arguement reverse=True, it's sorted in decreasing order. Sort compared the first element 
-                                #of the tuple (which is the 3 in the tuple (3, 'but')) -- it only considers the second
+                                #arguement reverse=True, it's sorted in decreasing order. Sort compares the first element 
+                                #of each tuple (which is the 3 in the tuple (3, 'but')) -- it only considers the second
                                 #element to break ties that may occur when comparing the first elements. 
 print t
 
@@ -70,4 +70,102 @@ print domain
 #Dictionaries and Tuples
 
 #Dictionaries have a method called items that returns a list of tuples, 
-#where each tuple is a key value pair.
+#where each tuple is a key value pair. The items are in no particular order.
+
+d = {'a':10, 'b':1, 'c':22}
+t = d.items()
+
+print t
+
+#Since t is a list of tuples, and tuples are comparable, we can 
+#sort the list of tuples. Converting a dictionary to a list of tuples
+#is a way for us to output the contenet of a dictionary  sorted by key.
+
+t.sort()
+
+print t
+
+#This new list is in ascending alphapetical order by the key value (letter a, b and c). 
+
+#Multiple assignment with dictionaries
+
+#You can traverse keys and values of a dictionary with a single loop
+#using items, tuple assignment and for.
+
+for key, val in d.items():
+    print val, key
+
+#this loop has two iteration variables, key and val, because items returns a list of tuples
+#Key and val successively iterate through each of the key value pairs in the dictionary. 
+#note that the output is hash key orger (e.g. in no particular order.)
+
+d = {'a':10, 'b':1, 'c':22} #here is a list of tuples, sorted by value and key.
+
+l = list()
+
+for key,val in d.items(): #items method gives us a list of key and value tuples. 
+                          #For each key and value in our key, value list of tuples
+                          #append the value and the key to our new list called l.
+    l.append((val, key))
+    
+print l
+
+l.sort(reverse=True)
+
+print l
+
+#The most common word practice
+
+import string 
+fhand = open('romeo-full.txt')
+counts = dict()
+for line in fhand:
+    line = line.translate(None, string.punctuation) #we use translate to remove all punctuation.
+    line = line.lower()                             #we use lower to force the line to lowercase.
+    words = line.split()
+    for word in words:
+        if word not in counts:
+            counts[word] = 1
+        else:
+            counts[word] += 1
+
+#sort the dictionary by value
+
+lst = list()
+for key, val in counts.items():
+    lst.append((val, key))
+
+lst.sort(reverse=True)
+
+print lst[:10] #this is a list of the most common words in romeo-full.txt. 
+                #but we are looking at just the ten most common words.
+
+for key, val in lst[:10]: 
+    print key, val
+    
+#using tuples as keys in dictionaries
+
+#Remember: The in operator uses different algorithms for lists and dictionaries. 
+#For lists, it uses a linear search algorithm. As the list gets londer, the search 
+#time gets longer in direct proportion to the length of the list. For dictionaries, 
+#python uses an algorithm called a hash table where the in operator takes the same 
+#amount of time no matter how many items there are in a dictionary. 
+
+#Imagine we need to create a telephone directory, that maps from last-name, first-name
+#pairs to telephone numbers.
+
+first = "alicia"
+last = "barrett"
+number = "100-123-4567"
+directory = dict()
+
+directory[last, first] = number
+
+#the expression in the bracket is a tuple.
+
+for last, first in directory:
+    print first, last, directory[last, first]
+
+#this loop traverses the keys in the directory, which are tuples. 
+#it assigns the elements of each tuple to last and first, then prints 
+#the name and corresponding telephone number.
