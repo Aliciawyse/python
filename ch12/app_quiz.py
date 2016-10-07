@@ -1,10 +1,11 @@
 import csv
-
 fhand = open('TSE_sample_data.csv')
 csv_f = csv.reader(fhand)
 
 #Create a disctionary to store a key-value pairs.
-#In this scenario, a key is a users start date and a value is the corresponding word in the words column.
+#In this scenario, a key is a users start date and 
+#a value is the corresponding word in the words column.
+
 date_and_word = dict()
 
 with open('TSE_sample_data.csv') as fhand:
@@ -24,7 +25,8 @@ with open('TSE_sample_data.csv') as fhand:
         
         if start_date < 1283731200:                     #Check if user started before 09-10-2010.
             date_and_word[start_date] = row[16]         #If so, create a new key-value pair for our dictionary.
-                                                        #Each key is a users start day. Each value is the corresponding word in the words column. 
+                                                        #Each key is a users start day. 
+                                                        #Each value is the corresponding word in the words column. 
                                                     
     a_list = date_and_word.keys()                       #Make a list of the keys, then sort it. 
     a_list.sort()                                       
