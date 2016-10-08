@@ -14,18 +14,17 @@ with open('TSE_sample_data.csv') as my_csv_file:
     #Disregard the first row because we are not interested in headers.
     next(csv_f)
     
-    #For each row in TSE_sample_data.csv do the following steps 
+    #For each row in TSE_sample_data.csv do the following:
     for row in csv_f:
     
-        #We know all dates in TSE_sample_data.csv are represented as a unix timestamp and 
-        #we know the 13th index of each row is the users start date and 
-        #the 16th index is the corresponding word from the words column. 
+        #Create a variable for the 13th index of each row, the users start date.
+        #Create a variable for the 16th index of each row, the corresponding word from the words column. 
+        #Keep in mind, all dates in TSE_sample_data.csv are represented as a unix timestamp. 
         start_date = int(row[13])
         words_column_word = row[16]
         
         #Use a python comparison operator to identify users who started before 09-10-2010. Its unix timestamp is 1283731200.
-
-        #If the user started before 09-10-2010
+        #If the user started before 09-10-2010 do the following:
         if start_date < 1283731200:           
             
             #Create a new key-value pair for our dictionary.
