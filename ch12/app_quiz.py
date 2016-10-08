@@ -8,7 +8,7 @@ date_and_word = dict()
 #Open file, use my_csv_file to refer to TSE_sample_data.csv then close file once we process data.
 with open('TSE_sample_data.csv') as my_csv_file:
     
-    #Use the csv modules reader function to parse TSE_sample_data.csv and return a list of rows.
+    #Use the csv modules reader method to parse TSE_sample_data.csv and return a list of rows to the variable csv_f.
     csv_f = csv.reader(my_csv_file)
     
     #Disregard the first row because we are not interested in headers.
