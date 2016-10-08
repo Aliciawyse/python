@@ -1,11 +1,17 @@
+#Use pythons csv module to read and write data in csv format
 import csv
+
+#Use file handle to access data in TSE_sample_data.csv
 fhand = open('TSE_sample_data.csv')
+
+#Use the csv modules reader function to take each row of the TSE_sample_data.csv file 
+#and to make a list containing the values found in the all of the columns of that row. 
 csv_f = csv.reader(fhand)
 
-#Create a disctionary to store a key-value pairs. In this scenario, a key is a users start date and 
-#a value is the corresponding word in the words column.
-
+#Create a dictionary to store key-value pairs. In this scenario, a key is a users start date 
+#and a value is the corresponding word in the words column. 
 date_and_word = dict()
+
 
 with open('TSE_sample_data.csv') as fhand:
     
@@ -27,7 +33,7 @@ with open('TSE_sample_data.csv') as fhand:
                                                         #Each key is a users start day. 
                                                         #Each value is the corresponding word in the 16th index of each row. 
                                                     
-    a_list = date_and_word.keys()                       #Make a list of the keys, then sort it. 
+    a_list = date_and_word.keys()                       #Make a list of the keys then sort it. 
     a_list.sort()                                       
         
 for key in a_list:                                      #Loop through the sorted list.
