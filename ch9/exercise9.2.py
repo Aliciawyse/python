@@ -11,7 +11,7 @@ for line in fhand:
     if line.startswith('From '):
         #print line.split()[2]
         running_count = line.split()[2]
-        
+        print running_count
         weekday[running_count] = weekday.get(running_count,0) + 1
         
         #if running_count not in weekday:

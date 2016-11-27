@@ -1,0 +1,17 @@
+#Instructions
+
+This application will read roster data in JSON format, parse the file, and then produce an SQLite database that contains a User, Course, and Member table and populate the tables from the data file.
+
+You can base your solution on this code: http://www.pythonlearn.com/code/roster.py - this code is incomplete as you need to modify the program to store the role column in the Member table to complete the assignment.
+
+Each student gets their own file for the assignment. Use file titled roster_data.json.
+
+Once you have made the necessary changes to the program and it has been run successfully reading the above JSON data, run the following SQL command:
+
+<pre>SELECT hex(User.name || Course.title || Member.role ) AS X FROM 
+    User JOIN Member JOIN Course 
+    ON User.id = Member.user_id AND Member.course_id = Course.id
+    ORDER BY X
+</pre>
+
+Find the first row in the resulting record set. (Hint: starts with 416)
